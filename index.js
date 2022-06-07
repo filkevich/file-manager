@@ -1,8 +1,17 @@
-import { getFileDirName, customExist } from './utils/index.js'
+import { homedir } from 'os'
+import { closeStdin } from './utils/index.js'
+import { showStartMsg, showExitMsg } from './messageModule.js'
+import validateByOperationRouter from './operationRouter.js'
 
-const runCli = async () => {
-  const { __dirname } = await getFileDirName(import.meta.url)
+function runCli () {
+  showStartMsg(homedir)
 
+  process.stdin
+    .on('data', validateByOperationRouter)
+    .on('close', showExitMsg)
+
+  process
+    .on('SIGINT', closeStdin)
 }
 
 runCli()

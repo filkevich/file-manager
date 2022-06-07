@@ -1,15 +1,15 @@
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
-const getFileDirName = (metaUrl) => new Promise((resolve, reject) => {
+const getFileDirName = async (metaUrl) => {
   try {
     const __filename = fileURLToPath(metaUrl)
     const __dirname = dirname(__filename)
-    resolve({ __filename, __dirname})
+    return { __filename, __dirname}
   }
   catch (err) {
-    reject(err)
+    throw Error(err)
   }
-})
+}
 
 export default getFileDirName
