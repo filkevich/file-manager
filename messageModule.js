@@ -24,4 +24,4 @@ const showStartMsg = dirname => {
 
 const showExitMsg = () => printMessage(`Thank you for using File Manager, ${userName}!`)
 
-export { printMessage, showStartMsg, showExitMsg }
+export { printMessage, showStartMsg, showExitMsg, showCurrentDirectory }
