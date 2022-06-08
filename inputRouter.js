@@ -13,7 +13,7 @@ const OPERATIONS = {
   '.exit': closeStdin,
 }
 
-const validateByOperationRouter = input => {
+const inputRouter = input => {
   try {
     const operation = getOperation(input)
     const isOperationValid = !!OPERATIONS[operation]
@@ -23,4 +23,4 @@ const validateByOperationRouter = input => {
   catch(err) { printMessage('Operation failed') }
 }
 
-export default validateByOperationRouter
+export default inputRouter
