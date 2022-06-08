@@ -1,5 +1,5 @@
 import { printMessage } from './msg/index.js'
-import { listFiles, up } from './fs/index.js'
+import { ls, up } from './navigation/index.js'
 import { getCpus, getEol, getHomeDir, getUserName, getArchitecture } from './os/index.js'
 
 const closeStdin = () => process.stdin.destroy()
@@ -7,12 +7,14 @@ const getOperation = input => input.toString().trim()
 
 const OPERATIONS = {
   'up': up,
-  'ls': listFiles,
+  'ls': ls,
+
   'os --EOL': getEol,
   'os --cpus': getCpus,
   'os --homedir': getHomeDir,
   'os --username': getUserName,
   'os --architecture': getArchitecture,
+
   '.exit': closeStdin,
 }
 
