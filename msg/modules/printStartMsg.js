@@ -1,6 +1,6 @@
 import printMessage from './printMessage.js'
 import printCurrentDir from './printCurrentDir.js'
-import getNameFromArgv from '../getNameFromArgv.js'
+import { getNameFromArgv } from '../../utils/index.js'
 
 const userName = getNameFromArgv()
 

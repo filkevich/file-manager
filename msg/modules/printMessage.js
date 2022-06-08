@@ -1,5 +1,5 @@
 import { EOL } from 'os'
-import { colorizeMsg } from '../utils/index.js'
+import { colorizeMsg } from '../../utils/index.js'
 
 const printMessage = (msg, color='white') => {
   const configuredMsg = colorizeMsg(msg, color) + EOL + EOL

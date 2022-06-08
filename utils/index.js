@@ -1,6 +1,6 @@
-import customExist from './customExist.js'
-import getFileDirName from './getFileDirName.js'
-import closeStdin from './closeStdin.js'
-import colorizeMsg from './colorizeMsg.js'
+import customExist from './modules/customExist.js'
+import getFileDirName from './modules/getFileDirName.js'
+import colorizeMsg from './modules/colorizeMsg.js'
+import getNameFromArgv from './modules/getNameFromArgv.js'
 
-export { customExist, getFileDirName, closeStdin, colorizeMsg }
+export { customExist, getFileDirName, colorizeMsg, getNameFromArgv }
