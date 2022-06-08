@@ -1,6 +1,6 @@
 import { printMessage } from './msg/index.js'
 import { listFiles, up } from './fs/index.js'
-import { getCpus, getEol } from './os/index.js'
+import { getCpus, getEol, getHomeDir } from './os/index.js'
 
 const closeStdin = () => process.stdin.destroy()
 const getOperation = input => input.toString().trim()
@@ -10,6 +10,7 @@ const OPERATIONS = {
   'ls': listFiles,
   'os --EOL': getEol,
   'os --cpus': getCpus,
+  'os --homedir': getHomeDir,
   '.exit': closeStdin,
 }
 
