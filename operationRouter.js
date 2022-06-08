@@ -1,22 +1,23 @@
-import { printMessage, showCurrentDirectory } from './messageModule.js'
-import { readdir } from 'fs/promises'
+import { printMessage } from './msg-module/index.js'
+import { listFiles, up } from './fs-module/index.js'
+import { colorizeMsg } from './utils/index.js'
+
 import closeStdin from './utils/closeStdin.js'
-import { join } from 'path'
 import { EOL, cpus } from 'os'
-
-const listFiles = async () => {
-  const filesArr = await readdir(process.env.CURRENT_DIR)
-  filesArr.forEach(printMessage)
-}
-
-const up = () => {
-  process.env.CURRENT_DIR = join(process.env.CURRENT_DIR, '..')
-  printMessage(process.env.CURRENT_DIR)
-}
 
 const getEol = () => printMessage(EOL)
 
-const getCpus = () => cpus.forEach(printMessage)
+const getCpus = () => {
+  const cpusList = cpus()
+  const transformedCpusList = cpusList.map(cpu => {
+    const { model, speed } = cpu
+    const colorizedModel = colorizeMsg(model, 'yellow')
+    const colorizedSpeed = colorizeMsg(speed, 'yellow')
+
+    return `{ ${EOL}  model: ${colorizedModel}, ${EOL}  speed: ${speed} ${EOL} }`
+  })
+  printMessage(transformedCpusList.join(EOL))
+}
 
 const operations = {
   'up': up,
