@@ -1,9 +1,9 @@
 import { join } from 'path'
-import { showCurrentDir } from '../msg-module/index.js'
+import { printCurrentDir } from '../msg-module/index.js'
 
 const up = () => {
   process.env.CURRENT_DIR = join(process.env.CURRENT_DIR, '..')
-  showCurrentDir()
+  printCurrentDir()
 }
 
 export default up

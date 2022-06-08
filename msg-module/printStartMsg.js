@@ -1,12 +1,12 @@
 import printMessage from './printMessage.js'
-import showCurrentDir from './showCurrentDir.js'
+import printCurrentDir from './printCurrentDir.js'
 import getNameFromArgv from '../getNameFromArgv.js'
 
 const userName = getNameFromArgv()
 
-const showStartMsg = () => {
+const printStartMsg = () => {
   printMessage(`Welcome to the File Manager, ${userName}!`, 'red')
-  showCurrentDir()
+  printCurrentDir()
 }
 
-export default showStartMsg
+export default printStartMsg

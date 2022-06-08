@@ -3,6 +3,6 @@ import printMessage from './printMessage.js'
 
 const userName = getNameFromArgv()
 
-const showExitMsg = () => printMessage(`Thank you for using File Manager, ${userName}!`, 'red')
+const printExitMsg = () => printMessage(`Thank you for using File Manager, ${userName}!`, 'red')
 
-export default showExitMsg
+export default printExitMsg
