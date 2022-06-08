@@ -1,11 +1,12 @@
 import printMessage from './printMessage.js'
 import printCurrentDir from './printCurrentDir.js'
-import { getNameFromArgv } from '../../utils/index.js'
-
-const userName = getNameFromArgv()
+import { getNameFromArgv, colorizeText } from '../../utils/index.js'
 
 const printStartMsg = () => {
-  printMessage(`Welcome to the File Manager, ${userName}!`, 'red')
+  const userName = getNameFromArgv()
+  const colorizedUserName = colorizeText(userName, 'yellow')
+
+  printMessage(`Welcome to the File Manager, ${colorizedUserName}!`, 'blue')
   printCurrentDir()
 }
 

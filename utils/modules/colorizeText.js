@@ -7,6 +7,6 @@ const COLORS = {
   yellow: '\x1b[33m',
 }
 
-const colorizeMsg = (msg, color) => COLORS[color] + msg + COLORS.white
+const colorizeText = (msg, color) => COLORS[color] + msg + COLORS.white
 
-export default colorizeMsg
+export default colorizeText

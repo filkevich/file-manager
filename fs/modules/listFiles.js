@@ -5,7 +5,7 @@ import { printMessage, printCurrentDir } from '../../msg/index.js'
 const listFiles = async () => {
   const filesArr = await readdir(process.env.CURRENT_DIR)
   const filesInOneString = filesArr.join(EOL)
-  printMessage(filesInOneString, 'green')
+  printMessage(filesInOneString, 'yellow')
   printCurrentDir()
 }
 

@@ -1,8 +1,11 @@
 import printMessage from './printMessage.js'
-import { getNameFromArgv } from '../../utils/index.js'
+import { getNameFromArgv, colorizeText } from '../../utils/index.js'
 
-const userName = getNameFromArgv()
+const printExitMsg = () => {
+  const userName = getNameFromArgv()
+  const colorizedUserName = colorizeText(userName, 'yellow')
 
-const printExitMsg = () => printMessage(`Thank you for using File Manager, ${userName}!`, 'red')
+  printMessage(`Thank you for using File Manager, ${colorizedUserName}!`, 'blue')
+}
 
 export default printExitMsg
