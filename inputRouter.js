@@ -1,6 +1,6 @@
 import { printMessage } from './msg/index.js'
 import { listFiles, up } from './fs/index.js'
-import { getCpus, getEol, getHomeDir, getUserName } from './os/index.js'
+import { getCpus, getEol, getHomeDir, getUserName, getArchitecture } from './os/index.js'
 
 const closeStdin = () => process.stdin.destroy()
 const getOperation = input => input.toString().trim()
@@ -12,6 +12,7 @@ const OPERATIONS = {
   'os --cpus': getCpus,
   'os --homedir': getHomeDir,
   'os --username': getUserName,
+  'os --architecture': getArchitecture,
   '.exit': closeStdin,
 }
 
@@ -20,9 +21,9 @@ const inputRouter = input => {
     const operation = getOperation(input)
     const isOperationValid = !!OPERATIONS[operation]
 
-    isOperationValid ? OPERATIONS[operation]() : printMessage('Invalid input')
+    isOperationValid ? OPERATIONS[operation]() : printMessage('Invalid input', 'red')
   }
-  catch(err) { printMessage('Operation failed') }
+  catch(err) { printMessage('Operation failed', 'red') }
 }
 
 export default inputRouter
