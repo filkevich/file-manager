@@ -1,4 +1,4 @@
-import { printMessage } from './msg/index.js'
+import { printMessage, printCurrentDir } from './msg/index.js'
 import { ls, up, cd } from './navigation/index.js'
 import validator from './validator.js'
 import os from './os/index.js'
@@ -22,18 +22,20 @@ const router = input => {
     const arrInput = getArrInput(input)
     const isInputValid = validator(arrInput, OPERATIONS, OPERATIONS_ARG)
 
-    if (!isInputValid) printMessage('Invalid input', 'red')
-    else {
+    if (!isInputValid) {
+      printMessage('Invalid input', 'red')
+    } else {
       const [operation, argument] = arrInput
       const isArgumentEmpty = !argument
 
       isArgumentEmpty
         ? OPERATIONS[operation]()
         : OPERATIONS_ARG[operation](argument)
+
+      printCurrentDir()
     }    
   }
   catch(err) {
-    console.log(err)
     printMessage('Operation failed', 'red')
   }
 }
