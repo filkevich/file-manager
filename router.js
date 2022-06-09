@@ -1,7 +1,7 @@
 import { printMessage, printCurrentDir } from './msg/index.js'
 import { ls, up, cd } from './navigation/index.js'
 import { inputValidator } from './validators/index.js'
-import { rn, add } from './files/index.js'
+import { rn, add, rm } from './files/index.js'
 import os from './os/index.js'
 
 const closeStdin = () => process.stdin.destroy()
@@ -18,6 +18,7 @@ const OPERATIONS_ARG = {
   'cd': cd,
   'rn': rn,
   'add': add,
+  'rm': rm,
 }
 
 const router = input => {
