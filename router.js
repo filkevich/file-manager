@@ -32,7 +32,7 @@ const router = input => {
         ? OPERATIONS[operation]()
         : OPERATIONS_ARG[operation](argument)
 
-      printCurrentDir()
+      if (operation !== '.exit') printCurrentDir()
     }    
   }
   catch(err) {
