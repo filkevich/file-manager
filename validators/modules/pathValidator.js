@@ -1,11 +1,12 @@
-import { join, isAbsolute, normalize, resolve } from 'path'
+import { normalize, resolve, dirname } from 'path'
 import { existsSync } from 'fs'
 
-const pathValidator = path => {
-  const isPathAbsolute = isAbsolute(path)
-  const newPath = isPathAbsolute ? resolve(process.env.CURRENT_DIR, path) : join(process.env.CURRENT_DIR, path)
-  const normalizedPath = normalize(newPath)
-  const isPathExists = existsSync(newPath)
+const pathValidator = (path, onlyDirectory) => {
+  const resolvedPath = resolve(process.env.CURRENT_DIR, path)
+  const normalizedPath = normalize(resolvedPath)
+
+  const pathDirOrFile = onlyDirectory ? dirname(normalizedPath) : normalizedPath
+  const isPathExists = existsSync(pathDirOrFile)
 
   return { normalizedPath, isPathExists }
 }
