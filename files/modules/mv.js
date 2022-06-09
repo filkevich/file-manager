@@ -1,19 +1,19 @@
-import { createReadStream, createWriteStream } from 'fs'
+import { renameSync } from 'fs'
 import { pathValidator } from '../../validators/index.js'
+import { resolve, parse } from 'path'
 
-const cp = args => {
+const mv = args => {
   if (args.length < 2) throw new Error('Wrong arguments quantity')
 
   const [ from, to ] = args
   const { normalizedPath: fromPath, isPathExists: isFromPathValid } = pathValidator(from)
   const { normalizedPath: toPath, isPathExists: isToPathValid } = pathValidator(to, true)
 
-  if (isFromPathValid && isToPathValid) {
-    const readable = createReadStream(fromPath, { encoding: 'utf8', highWaterMark: 16 * 1024 })
-    const writable = createWriteStream(toPath)
-    readable.pipe(writable)
-  }
+  const { name, ext } = parse(fromPath)
+  const toPathWithFileName = resolve(toPath, name + ext)
+
+  if (isFromPathValid && isToPathValid) renameSync(fromPath, toPathWithFileName)
   else throw new Error('There is no such directory or file')
 }
 
-export default cp
+export default mv
