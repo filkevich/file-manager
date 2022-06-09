@@ -13,12 +13,15 @@ const OS_OPERATIONS = {
   '--architecture': getArchitecture,
 }
 
-const os = arg => {
-  const isArgValid = OS_OPERATIONS.hasOwnProperty(arg)
+const os = args => {
+  if (args.length > 1) throw new Error('Wrong arguments quantity')
 
-  !isArgValid
-    ? printMessage('Invalid input', 'red')
-    : OS_OPERATIONS[arg]()
+  const [osArgument] = args
+  const isArgValid = OS_OPERATIONS.hasOwnProperty(osArgument)
+
+  isArgValid
+    ? OS_OPERATIONS[osArgument]()
+    : printMessage('Invalid input', 'red')
 }
 
 export default os
