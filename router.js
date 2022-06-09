@@ -1,6 +1,6 @@
 import { printMessage, printCurrentDir } from './msg/index.js'
 import { ls, up, cd } from './navigation/index.js'
-import validator from './validator.js'
+import { inputValidator } from './validators/index.js'
 import os from './os/index.js'
 
 const closeStdin = () => process.stdin.destroy()
@@ -20,7 +20,7 @@ const OPERATIONS_ARG = {
 const router = input => {
   try {
     const arrInput = getArrInput(input)
-    const isInputValid = validator(arrInput, OPERATIONS, OPERATIONS_ARG)
+    const isInputValid = inputValidator(arrInput, OPERATIONS, OPERATIONS_ARG)
 
     if (!isInputValid) {
       printMessage('Invalid input', 'red')

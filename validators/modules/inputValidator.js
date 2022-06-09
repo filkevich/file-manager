@@ -1,4 +1,4 @@
-const validator = (arrInput, OPERATIONS, OPERATIONS_ARG) => {
+const inputValidator = (arrInput, OPERATIONS, OPERATIONS_ARG) => {
   const { length } = arrInput
 
   if (length > 2 || length < 0) return false
@@ -11,4 +11,4 @@ const validator = (arrInput, OPERATIONS, OPERATIONS_ARG) => {
   return true
 }
 
-export default validator
+export default inputValidator
