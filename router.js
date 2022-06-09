@@ -9,12 +9,12 @@ const getArrInput = input => input.toString().trim().split(' ')
 const OPERATIONS = {
   'up': up,
   'ls': ls,
-  'cd': cd,
   '.exit': closeStdin
 }
 
 const OPERATIONS_ARG = {
   'os': os,
+  'cd': cd,
 }
 
 const router = input => {

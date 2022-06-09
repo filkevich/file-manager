@@ -4,8 +4,11 @@ import { printMessage } from '../../msg/index.js'
 
 const ls = () => {
   const filesArr = readdirSync(process.env.CURRENT_DIR)
-  const filesInOneString = filesArr.join(EOL)
-  printMessage(filesInOneString, 'yellow')
+  const filesQuantity = filesArr.length
+
+  !filesQuantity
+    ? printMessage('There is no files in the directory', 'red')
+    : printMessage(filesArr.join(EOL), 'yellow')
 }
 
 export default ls
