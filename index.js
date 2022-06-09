@@ -1,6 +1,6 @@
 import { homedir } from 'os'
 import { printStartMsg, printExitMsg } from './msg/index.js'
-import inputRouter from './inputRouter.js'
+import router from './router.js'
 
 const closeStdin = () => process.stdin.destroy()
 const initEnv = () => process.env.CURRENT_DIR = homedir
@@ -10,7 +10,7 @@ const runCli = () => {
   printStartMsg()
 
   process.stdin
-    .on('data', inputRouter)
+    .on('data', router)
     .on('close', printExitMsg)
 
   process
