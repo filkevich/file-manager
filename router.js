@@ -3,6 +3,7 @@ import { ls, up, cd } from './navigation/index.js'
 import { inputValidator } from './validators/index.js'
 import { rn, add, rm, cp, mv, cat } from './files/index.js'
 import os from './os/index.js'
+import hash from './hash/index.js'
 
 const closeStdin = () => process.stdin.destroy()
 const getArrInput = input => input.toString().trim().split(' ')
@@ -22,6 +23,7 @@ const OPERATIONS_ARG = {
   'cp': cp,
   'mv': mv,
   'cat': cat,
+  'hash': hash,
 }
 
 const router = input => {
@@ -43,6 +45,7 @@ const router = input => {
     }    
   }
   catch(err) {
+    console.log(err)
     printMessage('Operation failed', 'red')
   }
 }
