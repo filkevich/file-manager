@@ -4,7 +4,7 @@ import { printCurrentDir } from '../../msg/index.js'
 import { EOL } from 'os'
 
 const cat =  args => {
-  if (args > 1) throw new Error('Wrong arguments quantity')
+  if (args.length > 1) throw new Error('Wrong arguments quantity')
 
   const [ filePath ] = args
   const { normalizedPath, isPathExists } = pathValidator(filePath)
