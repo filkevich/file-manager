@@ -5,7 +5,8 @@ import { printInvalidInputMsg } from '../../msg/index.js'
 const up = async args => {
   const isArgsValid = args.length === 0
   
-  if (isArgsValid) {
+  if (!isArgsValid) printInvalidInputMsg()
+  else {
     try {
       env.CURRENT_DIR = join(env.CURRENT_DIR, '..')
     }
@@ -13,7 +14,6 @@ const up = async args => {
       throw new Error(err)
     }
   }
-  else printInvalidInputMsg()
 }
 
 export default up

@@ -1,14 +1,24 @@
 import { EOL } from 'os'
-import { readdirSync } from 'fs'
-import { printMessage } from '../../msg/index.js'
+import { readdir } from 'fs/promises'
+import { printMessage, printInvalidInputMsg } from '../../msg/index.js'
 
-const ls = () => {
-  const filesArr = readdirSync(process.env.CURRENT_DIR)
-  const filesQuantity = filesArr.length
+const ls = async args => {
+  const isArgsValid = args.length === 0
 
-  !filesQuantity
-    ? printMessage('There is no files in the directory', 'red')
-    : printMessage(filesArr.join(EOL), 'yellow')
+  if (!isArgsValid) printInvalidInputMsg()
+  else {
+    try {
+      const filesArr = await readdir(process.env.CURRENT_DIR)
+      const isDirEmpty = !filesArr.length
+
+      isDirEmpty
+        ? printMessage('There is no files in the directory', 'red')
+        : printMessage(filesArr.join(EOL), 'yellow')
+    }
+    catch(err) {
+      throw new Error(err)
+    }
+  }
 }
 
 export default ls
