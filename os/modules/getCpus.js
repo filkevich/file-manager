@@ -7,8 +7,10 @@ const getCpus = () => {
 
   const transformedCpusList = cpusList.map(cpu => {
     const { model, speed } = cpu
+
+    const speedInGHz = `${speed / 1000}GHz`
     const colorizedModel = colorizeText(model, 'yellow')
-    const colorizedSpeed = colorizeText(speed, 'yellow')
+    const colorizedSpeed = colorizeText(speedInGHz, 'yellow')
 
     return `{${EOL}  model: ${colorizedModel}, ${EOL}  speed: ${colorizedSpeed} ${EOL}}`
   })
