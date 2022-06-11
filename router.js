@@ -2,6 +2,7 @@ import { printMessage, printCurrentDir } from './msg/index.js'
 import { ls, up, cd } from './navigation/index.js'
 import { inputValidator } from './validators/index.js'
 import { rn, add, rm, cp, mv, cat } from './files/index.js'
+import { compress, decompress } from './compress/index.js'
 import os from './os/index.js'
 import hash from './hash/index.js'
 
@@ -24,6 +25,8 @@ const OPERATIONS_ARG = {
   'mv': mv,
   'cat': cat,
   'hash': hash,
+  'compress': compress,
+  'decompress': decompress,
 }
 
 const router = input => {
