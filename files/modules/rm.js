@@ -1,5 +1,6 @@
 import { rm as remove } from 'fs/promises'
 import { pathValidator } from '../../validators/index.js'
+import { printInvalidInputMsg } from '../../msg/index.js'
 
 const rm = async args => {
   const isArgsValid = args.length === 1
