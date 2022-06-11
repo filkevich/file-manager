@@ -1,6 +1,6 @@
 import { homedir } from 'os'
 import { printStartMsg, printExitMsg } from './msg/index.js'
-import router from './router.js'
+import router from './router/index.js'
 
 const closeStdin = () => process.stdin.destroy()
 const initEnv = () => process.env.CURRENT_DIR = homedir
