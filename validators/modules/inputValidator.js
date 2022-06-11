@@ -1,12 +1,14 @@
-const inputValidator = (arrInput, OPERATIONS, OPERATIONS_ARG) => {
-  const { length } = arrInput
+const inputValidator = (splittedInput, OPERATIONS) => {
+  const { length } = splittedInput
+  const [operation, arg1, arg2] = splittedInput
 
-  if (length > 3 || length < 0) return false
-  if (length === 1 && arrInput[0] === '') return false
+  if (length < 0 || length > 3) return false
+  if (!operation) return false
+  if (length === 2 && !arg1) return false
+  if (length === 3 && (!arg1 || !arg2)) return false
 
-  const [ operation ] = arrInput
-  if (length === 1 && !OPERATIONS.hasOwnProperty(operation)) return false
-  if (length > 1 && !OPERATIONS_ARG.hasOwnProperty(operation)) return false
+  const isOperationExists = OPERATIONS.hasOwnProperty(operation)
+  if (!isOperationExists) return false
 
   return true
 }
